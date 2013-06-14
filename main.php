@@ -78,10 +78,16 @@
             <td align="right"><b>Content:</b> </td>
 		    <td width=80% style="max-width:200px; "> <textarea id="code" name="content_file"></textarea></td>
         </tr>
+<tr>
+            <td align="right"><b>What is 6 plus 3:</b></td>
+             <td><input type="text" name="paste_captcha" size="20" placeholder="Enter your answer here"></td>
+        </tr>
         <tr>
+
 	    <td></td>
         <td valign="center" height="45"><input name="submit" type="submit" value="Paste"/></td>
          </tr>
+ 
         </table>
     </div>
 	</form>

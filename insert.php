@@ -1,9 +1,10 @@
-<?php  
+<?php 
+$ans=9;
 include "includes/libpaste.php";
 $connect=mysql_connect("localhost","root","fooxkcdpgh") ;
 if($connect)
 {
-
+/*
 	//pattern matching goes here:
 		$pattern = '/^14.139.\d{1,3}.\d{1,3}\z/';
 		$pattern1 = '/^172.16.\d{1,3}.\d{1,3}\z/';		
@@ -16,6 +17,11 @@ if($connect)
 		
 		
 
+*/
+$captcha=$_POST['paste_captcha'];
+if($captcha!=$ans)
+     exit('Captcha verification failed.');
+	
 
 	mysql_select_db("glupaste");
 	if(isset($_POST['submit']))
