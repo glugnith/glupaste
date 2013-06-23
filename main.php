@@ -82,11 +82,23 @@ session_start();
 <tr>
 
 <?php
-        $questions = array("1 plus 3","what is color of snow ?","what is opposite of boy ?","54 minus 3","100 minus 1","90 plus 1");
-       $qid =  rand(0,count($questions) - 1); 
-        $_SESSION['qid']= $qid;
+$url = 'http://api.textcaptcha.com/7g8bn23tjxssgcok88cgsswwk9nsboer';
+try{
+$xml = @new SimpleXMLElement($url,null,true);
+}catch(Exception $e){
+$fallback = '<captcha>'.
+      '<question>Is ice hot or cold?</question>'.
+            '<answer>'.md5('cold').'</answer></captcha>';
+              $xml = new SimpleXMLElement($fallback);
+
+}
+$question = (string)$xml->question;
             echo "<td align='right'><b>";
-          echo $questions[$qid]; 
+            echo $question;
+            $ans = array();
+            foreach($xml->answer as $hash)
+                $ans[] = (string) $hash;
+                $_SESSION['captcha']= $ans;
             echo "</b></td>";
              echo "<td><input type='text' name='paste_captcha' size='20' placeholder='Enter your answer here'></td>";
 ?>
