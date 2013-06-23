@@ -1,4 +1,5 @@
 <?php 
+session_start();
 	include_once "includes/header.php";
 ?>
 
@@ -79,9 +80,18 @@
 		    <td width=80% style="max-width:200px; "> <textarea id="code" name="content_file"></textarea></td>
         </tr>
 <tr>
-            <td align="right"><b>What is 6 plus 3:</b></td>
-             <td><input type="text" name="paste_captcha" size="20" placeholder="Enter your answer here"></td>
-        </tr>
+
+<?php
+        $questions = array("1 plus 3","what is color of snow ?","what is opposite of boy ?","54 minus 3","100 minus 1","90 plus 1");
+       $qid =  rand(0,count($questions) - 1); 
+        $_SESSION['qid']= $qid;
+            echo "<td align='right'><b>";
+          echo $questions[$qid]; 
+            echo "</b></td>";
+             echo "<td><input type='text' name='paste_captcha' size='20' placeholder='Enter your answer here'></td>";
+?>
+
+</tr>
         <tr>
 
 	    <td></td>

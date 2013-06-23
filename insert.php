@@ -1,5 +1,7 @@
 <?php 
-$ans=9;
+session_start();
+$ans=array("4","white","girl","51","99","91");
+$qid = $_SESSION['qid'];
 include "includes/libpaste.php";
 $connect=mysql_connect("localhost","root","fooxkcdpgh") ;
 if($connect)
@@ -19,7 +21,8 @@ if($connect)
 
 */
 $captcha=$_POST['paste_captcha'];
-if($captcha!=$ans)
+echo $qid;
+if($captcha!=$ans[$qid])
      exit('Captcha verification failed.');
 	
 
